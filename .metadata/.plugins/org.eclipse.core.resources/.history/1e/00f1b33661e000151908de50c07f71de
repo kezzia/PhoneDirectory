@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.Scanner;
+
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		//get name and number
+		Scanner in = new Scanner(System.in);
+		Writer fileWriter = new FileWriter("directory.txt", true);  //appends to file
+		
+		PhoneDirectory directory = new PhoneDirectory();
+
+		System.out.println("Enter a name: ");
+		String nameInput = in.nextLine();
+ 
+		System.out.println("Enter that user's number: ");
+		String numInput = in.nextLine();
+		
+		fileWriter.write(nameInput);
+		
+		directory.addEntry(nameInput, numInput);		
+		
+		
+		in.close();
+		fileWriter.close();
+	
+
+	}
+
+}

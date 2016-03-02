@@ -1,0 +1,32 @@
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//get name and number
+		Scanner in = new Scanner(System.in);
+		PrintWriter out = new PrintWriter("directory.txt");
+		
+		
+		
+		
+		System.out.println("Enter a name: ");
+		String nameInput = in.nextLine();
+ 
+		System.out.println("Enter that user's number: ");
+		String numInput = in.nextLine();
+		
+		//print name and number
+		System.out.println(nameInput);
+		System.out.println(numInput);
+		
+		
+		
+		
+		in.close();
+	
+
+	}
+
+}

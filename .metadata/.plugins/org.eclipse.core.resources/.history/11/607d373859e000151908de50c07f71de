@@ -1,0 +1,36 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+import PhoneDirectory.java;
+
+public class Main {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		//get name and number
+		Scanner in = new Scanner(System.in);
+		PrintWriter out = new PrintWriter("directory.txt");
+		
+		PhoneDirectory directory = new PhoneDirectory();
+		
+
+		System.out.println("Enter a name: ");
+		String nameInput = in.nextLine();
+ 
+		System.out.println("Enter that user's number: ");
+		String numInput = in.nextLine();
+		
+		//print name and number
+		System.out.println(nameInput);
+		System.out.println(numInput);
+		
+		
+		
+		
+		in.close();
+		out.close();
+	
+
+	}
+
+}

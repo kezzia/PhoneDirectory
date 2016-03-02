@@ -1,0 +1,19 @@
+
+public class PhoneDirectory {
+	void addEntry(String name, String number) {
+		//pass
+	}
+	
+	void deleteEntry(String name) {
+		//pass
+	}
+	
+	//String getNumber(String name) {
+		//pass
+	//}
+	
+	void changeEntry(String name, String number) {
+		//pass
+	}
+
+}
