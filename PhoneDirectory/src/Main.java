@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//get name and number
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Enter a name: ");
+		System.out.println("Enter that user's number: ");
+	
+
+	}
+
+}
