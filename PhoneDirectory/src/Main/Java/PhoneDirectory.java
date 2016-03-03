@@ -28,66 +28,74 @@ public class PhoneDirectory {
 				}
 			}
 
-		
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		}
 	
 
 	//given a name and number, adds both to directory
-	void addEntry(String name, String number) throws IOException {
-		//print name and number
+	public void addEntry(String name, String number) throws IOException {
+		//create \n character
+		String newLine = System.getProperty("line.separator");
 
+		//prop info
 		Properties prop = new Properties();
 		InputStream fileInput = null;
 		fileInput = new FileInputStream("C:\\Users\\Kezzia\\Desktop\\Phone_Directory\\PhoneDirectory\\src\\Main\\Resources\\phone.properties");
 		prop.load(fileInput);
 		
+		//it appends the new info to the file
 		Writer fileWriter = new FileWriter((prop.getProperty("path")), true);  //appends to file
 		fileWriter.write(name + " " + number);
+		//inserts line break so everything is on a new line
 		fileWriter.write(System.lineSeparator());
 		fileWriter.close();
 		
+		//it prints what was just added
+		System.out.println("Adding:");
 		System.out.println("Name: " + name);
-		System.out.println("Phone number: " + number);
+		System.out.println("Number: " + number);
+		System.out.println(newLine);
 		//pass
 	}
 	
 	//given a name, deletes name and num from directory
-	void deleteEntry(String name) {
+	public void deleteEntry(String name) throws IOException {
+		Properties prop = new Properties();
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("C:\\Users\\Kezzia\\Desktop\\Phone_Directory\\PhoneDirectory\\src\\Main\\Resources\\phone.properties");
+		prop.load(fileInput);		
+		
 		try {
 	        // input the file content to the String "input"
 			String newLine = System.getProperty("line.separator");
-	        BufferedReader file = new BufferedReader(new FileReader("C:\\Users\\Kezzia\\Desktop\\" +
-																	"Phone_Directory\\PhoneDirectory\\src\\Main\\" +
-																	"Resources\\directory.txt"));
+			
+			//initialising ostream
+	        BufferedReader file = new BufferedReader( new FileReader( (prop.getProperty("path") )) );
 	        String line;
 	        String input = "";
 
+    		System.out.println("Deleting:");
+    		System.out.println("Name: " + name);
+    		System.out.println(newLine);
+	        
+    		//iterates through the file line by line
 	        while ((line = file.readLine()) != null) {
 	        	
+	        	//if the name is included in that line, delete it
 	        	if (line.toLowerCase().contains(name.toLowerCase())) {
 	        		line = "";
+		        	input += line;
 	        	}
-	        	
-	        	input += line + newLine;
-	        	System.out.println(input);
+	        	//otherwise add it to the input
+	        	else {
+	        		input += line + newLine;
+	        	}
+
 	        }
 	        
-    		System.out.println("That user was not found");
 	        file.close();
 
-	        // write the new String with the replaced line OVER the same file
-	        FileOutputStream fileOut = new FileOutputStream("directory.txt");
+	        // it writes the new string with the replaced line over the same file
+	        FileOutputStream fileOut = new FileOutputStream((prop.getProperty("path")));
 	        fileOut.write(input.getBytes());
 	        fileOut.close();
 
@@ -96,11 +104,22 @@ public class PhoneDirectory {
 	    }
 	}
 	
+	
+	
+	
 	//given a name, returns a num from the directory
-	String getNumber(String name) {
+	public String getNumber(String name) throws IOException {
+		Properties prop = new Properties();
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("C:\\Users\\Kezzia\\Desktop\\Phone_Directory\\PhoneDirectory\\src\\Main\\Resources\\phone.properties");
+		prop.load(fileInput);
+		String newLine = System.getProperty("line.separator");
+		
+		
+		
 		try {
 	        // input the file content to the String "input"
-	        BufferedReader file = new BufferedReader(new FileReader("C:\\Users\\Kezzia\\Desktop\\Phone_Directory\\PhoneDirectory\\src\\Main\\Resources\\directory.txt"));
+	        BufferedReader file = new BufferedReader(new FileReader((prop.getProperty("path"))));
 	        String line;
 
 	        while ((line = file.readLine()) != null) {
@@ -110,7 +129,7 @@ public class PhoneDirectory {
 	        		        		
 	        		
 	    	        file.close();
-	        		return splitString[1];
+	        		return splitString[2];
 	        	}
 	        }
 	       
@@ -125,30 +144,45 @@ public class PhoneDirectory {
 	}	
 	
 	
+	
+	
 	//given a name and num, changes entry with matching name
-	void changeEntry(String name, String number) {
+	public void changeEntry(String name, String number) throws IOException {
+		Properties prop = new Properties();
+		InputStream fileInput = null;
+		fileInput = new FileInputStream("C:\\Users\\Kezzia\\Desktop\\Phone_Directory\\PhoneDirectory\\src\\Main\\Resources\\phone.properties");
+		prop.load(fileInput);
+		
+		
+		
+		
 		try {
 	        // input the file content to the String "input"
 			String newLine = System.getProperty("line.separator");
-	        BufferedReader file = new BufferedReader(new FileReader("/PhoneDirectory/src/Main/Resources/directory.txt"));
+	        BufferedReader file = new BufferedReader(new FileReader(( prop.getProperty("path") )));
 	        String line;
 	        String input = "";
-
+	        
+	        //it iterates over the file line by line
 	        while ((line = file.readLine()) != null) {
 	        	
+	        	//when it finds a line with a matching name, it overwrites it with the new info
 	        	if (line.toLowerCase().contains(name.toLowerCase())) {
-	        		System.out.println("Match");
 	        		line = name + " " + number;
 	        	}
 	        	
 	        	input += line + newLine;
-	        	System.out.println(input);
 	        }
-    		System.out.println("That user was not found");
+	        
+	        //prints what was just added
+    		System.out.println("Adding:");
+    		System.out.println("Name: " + name);
+    		System.out.println("Number: " + number);
+    		System.out.println(newLine);
 	        file.close();
 
-	        // write the new String with the replaced line OVER the same file
-	        FileOutputStream fileOut = new FileOutputStream("/PhoneDirectory/src/Main/Resources/directory.txt");
+	        // overwriting the old file
+	        FileOutputStream fileOut = new FileOutputStream((prop.getProperty("path")));
 	        fileOut.write(input.getBytes());
 	        fileOut.close();
 
