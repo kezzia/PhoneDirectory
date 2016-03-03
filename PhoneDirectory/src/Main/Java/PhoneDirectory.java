@@ -28,7 +28,7 @@ public class PhoneDirectory {
 				}
 			}
 
-		}
+		
 
 	
 	
@@ -51,8 +51,6 @@ public class PhoneDirectory {
 		InputStream fileInput = null;
 		fileInput = new FileInputStream("C:\\Users\\Kezzia\\Desktop\\Phone_Directory\\PhoneDirectory\\src\\Main\\Resources\\phone.properties");
 		prop.load(fileInput);
-		//System.out.println(prop.getProperty("path"));
-		
 		
 		Writer fileWriter = new FileWriter((prop.getProperty("path")), true);  //appends to file
 		fileWriter.write(name + " " + number);
