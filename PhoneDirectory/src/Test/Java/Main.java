@@ -5,6 +5,10 @@ import java.util.Scanner;
 import Main.Java.PhoneDirectory;
 
 
+/**
+ * @author Kezzia
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) throws IOException {

@@ -3,6 +3,10 @@ package Main.Java;
 import java.io.*;
 import java.util.Properties;
 
+/**
+ * @author Kezzia
+ *
+ */
 public class PhoneDirectory {
 
 
@@ -16,7 +20,6 @@ public class PhoneDirectory {
 				prop.load(fileInput);
 				System.out.println(prop.getProperty("path"));
 			} catch (IOException ex) {
-				// TODO Auto-generated catch block
 				ex.printStackTrace();
 			} finally {
 				if (fileInput != null) {
@@ -50,8 +53,7 @@ public class PhoneDirectory {
 		fileWriter.close();
 		
 		//it prints what was just added
-		System.out.println("Adding:");
-		System.out.println("Name: " + name);
+		System.out.println("Adding:"); System.out.println("Name: " + name);
 		System.out.println("Number: " + number);
 		System.out.println(newLine);
 		//pass
